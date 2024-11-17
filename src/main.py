@@ -30,7 +30,7 @@ async def root():
     return {"message": "Hello World"}
 
 
-@app.get("hello")
+@app.get("/hello")
 def hello():
     return {"message": "hello I am testserviceb"}
 
