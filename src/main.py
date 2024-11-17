@@ -35,7 +35,7 @@ def hello():
     return {"message": "hello I am testserviceb"}
 
 
-@app.get("get_testservice")
+@app.get("/get_testservice")
 def get_testservice():
     r = requests.get('https://testservice/hello')
     return r.json()
