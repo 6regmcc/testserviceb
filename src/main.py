@@ -37,5 +37,5 @@ def hello():
 
 @app.get("/get_testservice")
 def get_testservice():
-    r = requests.get('https://testservice/hello')
+    r = requests.get('http://testservicea:80/hello')
     return r.json()
