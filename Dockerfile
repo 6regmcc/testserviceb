@@ -27,8 +27,8 @@ RUN apk add --update curl && \
 
 ENV VIRTUAL_ENV=/app/.venv \
     PATH="/app/.venv/bin:$PATH"
-ENV DATABASE_URL="sqlite:///database.db"
-ENV ENVIRONMENT="dev"
+#ENV DATABASE_URL="sqlite:///database.db"
+#ENV ENVIRONMENT="dev"
 
 
 COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}

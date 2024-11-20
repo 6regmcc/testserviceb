@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: testservcieb
-        image: 6regmcc/servicenewb:6
+        image: 6regmcc/servicenewb:7
         ports:
         - containerPort: 8080
 ---
@@ -32,3 +32,14 @@ spec:
     nodePort: 30000   # Port accessible externally on each node
   selector:
     app: testservcieb  # Select pods with this label
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: testservcieb-config
+  labels:
+    app: testservcieb
+
+data:
+  DATABASE_URL: sqlite:///database.db
+  ENVIRONMENT: dev
