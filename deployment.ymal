@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: testservcieb
-        image: 6regmcc/servicenewb:4
+        image: 6regmcc/servicenewb:6
         ports:
         - containerPort: 8080
 ---

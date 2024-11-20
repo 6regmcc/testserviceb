@@ -37,5 +37,5 @@ def hello():
 
 @app.get("/get_testservice")
 def get_testservice():
-    r = requests.get('http://testservicea:80/hello')
+    r = requests.get('http://testservicea.default.svc.cluster.local/hello')
     return r.json()
