@@ -22,7 +22,9 @@ async def lifespan(app: FastAPI):
     print(f'Current env is {os.environ.get("ENVIRONMENT")}')
     yield
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(lifespan=lifespan,
+              root_path=os.environ.get("ROOT_PATH"),
+              openapi_url='/testserviceb/openapi.json',)
 
 
 @app.get("/")

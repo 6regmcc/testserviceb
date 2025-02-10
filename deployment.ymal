@@ -8,17 +8,21 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: testservcieb
+      app: testserviceb
   template:
     metadata:
       labels:
-        app: testservcieb
+        app: testserviceb
     spec:
       containers:
-      - name: testservcieb
-        image: 6regmcc/servicenewb:7
+      - name: testserviceb
+        image: 6regmcc/testserviceb:9
         ports:
         - containerPort: 8080
+        envFrom:
+            - configMapRef:
+                name: testserviceb-config
+
 ---
 apiVersion: v1
 kind: Service
@@ -29,17 +33,21 @@ spec:
   ports:
   - port: 80          # Port exposed within the cluster
     targetPort: 8080  # Port on the pods
-    nodePort: 30000   # Port accessible externally on each node
+    nodePort: 30002   # Port accessible externally on each node
   selector:
-    app: testservcieb  # Select pods with this label
+    app: testserviceb  # Select pods with this label
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: testservcieb-config
+  name: testserviceb-config
   labels:
-    app: testservcieb
-
+    app: testserviceb
 data:
-  DATABASE_URL: sqlite:///database.db
-  ENVIRONMENT: dev
+  DATABASE_URL: "sqlite:///database.db"
+  ENVIRONMENT: "dev"
+  ROOT_PATH: "/testserviceb"
+
+
+
+#image: 6regmcc/servicenewb:7
